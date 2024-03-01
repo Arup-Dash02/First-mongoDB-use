@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function getAnimalData() {
+      // fetch("https://fakerapi.it/api/v1/persons").then(function (resopnse) {
+      //   //as fetch returns promise
+      //   resopnse.json().then(function (finalData) {
+      //     //response.json() also return promise
+      //     console.log(finalData);
+      //   });
+      // });
+      // }
+      //Another cleaner way of doing the above thing using async await
+
+      async function getAnimalData() {
+        const resopnse = await fetch("https://fakerapi.it/api/v1/persons");
+        const finalData = await resopnse.json();
+        const names = document.getElementById("names");
+        names.innerText = JSON.stringify(finalData);
+      }
+    </script>
+    <p id="names"></p>
+    <button onclick="getAnimalData()">Get animal data</button>
+  </body>
+</html>
